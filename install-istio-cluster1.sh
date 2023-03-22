@@ -2,10 +2,9 @@
 export CTX_CLUSTER1=cluster1
 export CTX_CLUSTER2=cluster2
 kubectl config use-context cluster1
-istioctl install --set profile=demo -y
-sleep 5
+kubectl create ns istio-system 
 kubectl --context="${CTX_CLUSTER1}" get namespace istio-system && \
-  kubectl --context="${CTX_CLUSTER1}" label namespace istio-system topology.istio.io/network=network1
+  kubectl --context="${CTX_CLUSTER1}" label namespace istio-system topology.istio.io/network=network1 --overwrite
 istioctl install --set values.pilot.env.EXTERNAL_ISTIOD=true --context="${CTX_CLUSTER1}" -f cluster1.yaml -y
 sleep 5
 samples/multicluster/gen-eastwest-gateway.sh \

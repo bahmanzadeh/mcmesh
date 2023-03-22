@@ -6,4 +6,5 @@ spec:
     istiodRemote:
       injectionPath: /inject/cluster/cluster2/net/network2
     global:
-      remotePilotAddress: ${DISCOVERY_ADDRESS}
+      configCluster: true 
+      remotePilotAddress: 192.168.39.51
