@@ -1,7 +1,7 @@
 Requirements
-- Istio deploymet model: Primary-Remote multi cluster single mesh with different networks
+- Istio deploymet model: Multi Primary multi cluster single mesh with different networks
 - We need two clusters with load balance installed
-- install istio only on cluster1
+- Istio can be or not installed on both clusters. The scripts will install Istio anyways.
 
 
 
