@@ -1,5 +1,11 @@
 #!/bin/bash
 #run it only onetime
+# for mTLS each workload needs a certificate and istiod as the CA will issue the certs by default. if you have multiple istiod then you need 
+# all control planes to have the same root CA to be able to trust each other in an multi cluster mesh.
+# A multicluster service mesh deployment requires that you establish trust between all clusters in the mesh. 
+# You need to first create these certs and have them available. note Changing the CA typically requires reinstalling Istio. 
+# after running this file you can go ahead and install the istio on the clusters. It will read these certs.
+# https://istio.io/latest/docs/tasks/security/cert-management/plugin-ca-cert/
 mkdir -p certs
 pushd certs
 make -f ../tools/certs/Makefile.selfsigned.mk root-ca
