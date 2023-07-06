@@ -2,7 +2,7 @@
 export CTX_CLUSTER1=cluster1
 export CTX_CLUSTER2=cluster2
 kubectl config use-context cluster2
-kubectl create ns istio-system 
+#kubectl create ns istio-system 
 kubectl --context="${CTX_CLUSTER2}" get namespace istio-system && \
   kubectl --context="${CTX_CLUSTER2}" label namespace istio-system topology.istio.io/network=network2
 istioctl install --context="${CTX_CLUSTER2}" -f cluster2.yaml -y

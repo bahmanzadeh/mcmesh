@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-svc1v2
+  namespace: ns1
+  labels:
+    app: helloworld-svc1v2
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+     app: helloworld-svc1
+     version: v2
+ template:
+    metadata:
+     name: helloworld-svc1
+     labels:
+       app: helloworld-svc1
+       version: v2
+    spec:
+      containers:
+      - name: helloworld-svc1v2
+        image: rezabah/svc1v2:v2
+        ports:
+        - containerPort: 80
+          name: http-web
