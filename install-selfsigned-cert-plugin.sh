@@ -1,6 +1,8 @@
 #!/bin/bash
 #run it only onetime
-# for mTLS each workload needs a certificate and control plane as the Certificate Manager will issue the certs by default. 
+# This process is going to issue an intermidate CA certificate for each cluster and save it in a secret
+# First it will create a root CA and then it will ceate a intermidate CA cert signed by that for each cluster.
+# for mTLS each workload needs a certificate and Istio control plane (Istiod) as the Certificate Manager will issue the certs by default. 
 # if you have multiple istiod then you need all control planes to have the same root CA to be able to trust each other in an multi cluster mesh.
 # A multicluster service mesh deployment requires that you establish trust between all clusters in the mesh. 
 # You need to first create these certs and have them available. note Changing the CA typically requires reinstalling Istio. 

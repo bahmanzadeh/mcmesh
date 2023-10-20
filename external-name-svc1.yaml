@@ -2,13 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: helloworld-svc1
- # namespace: ns1
-  labels:
-    app: helloworld-svc1
+  namespace: ns1
 spec:
-  selector:
-    app: helloworld-svc1
+  type: ExternalName
+  externalName: helloworld-svc1.corens
   ports:
     - port: 80
-      appProtocol: http
       targetPort: 80

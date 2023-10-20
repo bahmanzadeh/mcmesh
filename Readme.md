@@ -3,10 +3,16 @@ Requirements
 - We need two clusters with load balance installed
 - Istio can be or not installed on both clusters. The scripts will install Istio anyways.
 - First you need to change the root CA since this is a multi primary multi cluster and you need to have root CA and then create an intermiate CA from the root for each cluster
-Order of running the scripts:
+Order of running the scripts (it will create for both cluster1 and cluster2 so you don't need to change the context)
 install-selfsigned-cert-plugin.sh
 install-istio-multi-primary-cluster1.sh
 install-istio-multi-primary-cluster2.sh
+
+Enable mtls for both clusters:
+kubectl apply -f mtls.yaml
+
+The Istio control plane requires access to all clusters in the mesh to discover services, endpoints, and pod attributes. The following describes how to generate a kubeconfig file for a remote cluster to be used by the Istio control plane. Best practice is to create a Kubernetes service account in the remote cluster with the minimal RBAC access required.
+
 enable-endpoint-discovery.sh
 
 kubectl label namespace ns1 istio-injection=enabled
