@@ -1,4 +1,6 @@
-# Istio Multi Cluster Mesh
+# Istio Multi-Cluster Mesh
+![](https://github.com/bahmanzadeh/mcmesh/blob/master/istio-multi-primary-clusters.png)
+----
 ## Requirements
 - Istio deployment model: Multi Primary multi-cluster single mesh with different networks
 - We need two clusters with load balance installed
